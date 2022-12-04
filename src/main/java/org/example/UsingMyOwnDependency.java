@@ -11,15 +11,15 @@ public class UsingMyOwnDependency {
 
     public static void main(String[] args) throws Exception {
 
-        BaseCustomerManager customerManager = new NeroCustomerManager();
-        customerManager.Save(new Customer("Ali Can","Özsoy", LocalDate.of(2000,5,19),1));
+        BaseCustomerManager customerManagerNero = new NeroCustomerManager();
+        customerManagerNero.Save(new Customer("Ali Can","Özsoy", LocalDate.of(2000,5,19),1));
         System.out.println();
 
-        BaseCustomerManager customerManager1 = new StarbucksCustomerManager(new CustomerCheckManager());
-        customerManager1.Save(new Customer("Murat","Toprak",LocalDate.of(1997,1,9),1));
+        BaseCustomerManager customerManagerStarBucks = new StarbucksCustomerManager(new CustomerCheckManager(){});
+
+        customerManagerStarBucks.Save(new Customer("Murat","Toprak",LocalDate.of(1997,1,9),5));
         System.out.println();
 
-        customerManager.Delete(new Customer(1));
-
+        customerManagerNero.Delete(new Customer(3));
     }
 }
